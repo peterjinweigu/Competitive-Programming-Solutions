@@ -1,2 +1,2 @@
 # Competitive-Programming-Solutions
-Competitive programming solutions 
+Competitive programming solutions written in Python and C++. 
