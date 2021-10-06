@@ -82,7 +82,7 @@ int main(){
     for (event e : queries){
         if (query(1, n, e.l, e.r, 1) != e.val) {pos = false; break;}
     }
-    if (!pos) cout << "Impossible" << "\n"; // LOL CAPS
+    if (!pos) cout << "Impossible" << "\n";
     else{
         for (int i = 1; i <= n; i++) cout << ans[i] << " ";
         cout << "\n";
