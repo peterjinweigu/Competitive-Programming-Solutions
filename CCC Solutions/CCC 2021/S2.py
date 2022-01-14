@@ -1,41 +1,29 @@
 import sys
 
 # :)
-f = []
-total = 0
-stackF = 0
-stackB = 0
 
-
-def cmp(p):
-    return -p[0]
-
-
+m = int(sys.stdin.readline().strip())
 n = int(sys.stdin.readline().strip())
-for j in range(n):
-    x, y, z = map(int, sys.stdin.readline().split())
-    f.append([x+z, y, 1])
-    if x-z > 0:
-        f.append([x-z, y, -1])
-        total += (x-z)*y
-        stackB += y
+k = int(sys.stdin.readline().strip())
+row = [1 for j in range(m+1)]
+col = [1 for _ in range(n+1)]
 
-f.sort(key=cmp)
-last = 0
-
-ans = sys.maxsize
-while len(f) > 0:
-    ans = min(total, ans)
-    cur = f.pop(-1)
-    if cur[2] == -1:
-        total -= stackB*(cur[0] - last)
-        total += stackF * (cur[0] - last)
-        last = cur[0]
-        stackB -= cur[1]
-
+for j in range(k):
+    t, h = sys.stdin.readline().split()
+    if t == "C":
+        col[int(h)] *= -1
     else:
-        total -= stackB * (cur[0] - last)
-        total += stackF * (cur[0] - last)
-        stackF += cur[1]
-        last = cur[0]
+        row[int(h)] *= -1
+r = 0
+c = 0
+ans = 0
+for j in range(m+1):
+    if row[j] == -1:
+        r += 1
+        ans += n - (2*c)
+for i in range(n+1):
+    if col[i] == -1:
+        c += 1
+        ans += m - (2*r)
+
 print(ans)
